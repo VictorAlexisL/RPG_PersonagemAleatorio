@@ -42,11 +42,21 @@
 
   <table>
     <tr>
-      <h5>( Nome | Classe | Força | Inteligência | Destreza )</h5>
-
+      <th>Nome</th>
+      <th>Classe</th>
+      <th>Força</th>
+      <th>Inteligência</th>
+      <th>Destreza</th>
+    </tr>
     {% for item in character_list %}
-    <p>{{ item }}</p>
-    {% endfor %}
+    <tr>
+      <td>{{ item[0] }}</td>
+      <td>{{ item[1] }}</td>
+      <td>{{ item[2] }}</td>
+      <td>{{ item[3] }}</td>
+      <td>{{ item[4] }}</td>
+    </tr>
+    {% endfor %}    
   {% endif %}
 
   <script>
