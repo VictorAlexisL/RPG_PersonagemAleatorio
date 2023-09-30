@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Novo personagem!</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<form id="newCharacterForm" action="#" method="POST">
+  <fieldset>
+    <legend>Crie um personagem!</legend>
+    <label for="characterName">Nome: </label>
+    <input type="text" id="characterName" name="characterName" onchange="saveCharacterName()">
+    <br>
+    <label for="characterClass">Classe: </label><br>
+    <input id="warrior" type="radio" value="warrior" name="characterClass" onclick="saveCharacterClass(this.value)">
+      Guerreiro</input><br>
+
+    <input id="wizard" type="radio" value="wizard" name="characterClass" onclick="saveCharacterClass(this.value)">
+      Mago</input><br>
+    
+    <input id="thief" type="radio" value="thief" name="characterClass" onclick="saveCharacterClass(this.value)">
+      Ladino</input><br>
+    <br>
+    <input type="submit" id="submit" disabled="true" value="Criar Personagem">
+  </fieldset>
+</form>
+
+<div id="erroDiv"></div>
+
+
+  {% if number_of_characters == 0 %}
+  
+  Nenhum personagem criado!
+
+  {% else %}
+
+  <h2>Personagens criados:</h2>
+
+  <table>
+    <tr>
+      <h5>( Nome | Classe | Força | Inteligência | Destreza )</h5>
+
+    {% for item in character_list %}
+    <p>{{ item }}</p>
+    {% endfor %}
+  {% endif %}
+
+  <script>
+
+    let characterName, characterClass;
+
+    function checkInput() {
+      if (characterName && characterClass) {
+        document.getElementById("submit").disabled = false;
+      } else {
+        document.getElementById("submit").disabled = true;
+      }
+    }
+
+    function saveCharacterName() {
+      characterName = document.getElementById("characterName").value;
+      checkInput()
+    }
+
+    function saveCharacterClass(value) {
+      characterClass = value;
+      checkInput()
+    }
+  </script>
+
+{% endblock %}
