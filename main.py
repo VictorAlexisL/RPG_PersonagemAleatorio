@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import random
-
+from random import randint
 app = Flask(__name__)
 
 character_list = []
@@ -24,24 +23,24 @@ class Character:
         character_list.append((self.name, self.classe, self.strength, self.intelligence, self.dexterity))
 
     def get_exp(self):
-        self.exp += random.randint(1,100)
+        self.exp += randint(1,100)
         if self.exp >= 100:
             self.level_up()        
         return self.exp
     
     def generate_stats(self):
         if self.character_class == "warrior":
-            self.strength += random.randint(2,5)
-            self.intelligence += random.randint(0,1)
-            self.dexterity += random.randint(0,3)
+            self.strength += randint(2,5)
+            self.intelligence += randint(0,1)
+            self.dexterity += randint(0,3)
         elif self.character_class == "wizard":
-            self.strength += random.randint(0,1)
-            self.intelligence += random.randint(2,5)
-            self.dexterity += random.randint(0,3)
+            self.strength += randint(0,1)
+            self.intelligence += randint(2,5)
+            self.dexterity += randint(0,3)
         else:
-            self.strength += random.randint(0,1)
-            self.intelligence += random.randint(0,3)
-            self.dexterity += random.randint(2,5)          
+            self.strength += randint(0,1)
+            self.intelligence += randint(0,3)
+            self.dexterity += randint(2,5)          
         print(f"{self.name}, Class: {self.character_class}, Strength: {self.strength}; Intelligence: {self.intelligence}; Dexterity: {self.dexterity}")
         return f"{self.name}, Class: {self.character_class}, Strength: {self.strength}; Intelligence: {self.intelligence}; Dexterity: {self.dexterity}"
 
