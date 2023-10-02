@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Olá, {{ characterName }} !</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<h1>Personagem criado!</h1>
+<h3>Nome: {{ characterName }}</p>
+
+{% if characterClass == "wizard" %}
+
+<h4>Classe: Mago</h4>
+
+{% elif characterClass == "thief" %}
+
+<h4>Classe: Ladino</h4>
+
+{% else %}
+
+<h4>Classe: Guerreiro</h4>
+
+{% endif %}
+
+<p>Força: {{ strength }}</p>
+<p>Inteligência: {{ intelligence }}</p>
+<p>Destreza: {{ dexterity }}</p>
+
+<a href="/">Retornar à página de início</a>
+
+{% endblock %}
